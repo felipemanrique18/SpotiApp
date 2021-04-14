@@ -1,0 +1,224 @@
+[33mcommit 0f9c6ffe944f38eb4d6ee2260d2d9f93df97d0dc[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: felipe manrique <felipemanrique018@gmail.com>
+Date:   Wed Apr 14 11:53:45 2021 -0500
+
+    Actulizacion del repositorio
+
+[1mdiff --git a/src/app/components/home/home.component.html b/src/app/components/home/home.component.html[m
+[1mnew file mode 100644[m
+[1mindex 0000000..5cce62e[m
+[1m--- /dev/null[m
+[1m+++ b/src/app/components/home/home.component.html[m
+[36m@@ -0,0 +1,315 @@[m
+[32m+[m[32m<!-- <app-loading *ngIf="loading"></app-loading>[m
+[32m+[m[32m<div *ngIf="error">[m
+[32m+[m[32m    <div class="alert alert-danger alert-dismissible fade show" role="alert">[m
+[32m+[m[32m        <strong>Error!</strong> {{messageError}}[m
+[32m+[m[32m        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m</div>[m
+[32m+[m[32m<app-tarjetas [items]="nuevasCanciones"></app-tarjetas> -->[m
+[32m+[m
+[32m+[m[32m<app-navbar></app-navbar>[m
+[32m+[m[32m<!-- content -->[m
+[32m+[m[32m<app-tarjetas [items]="nuevasCanciones"></app-tarjetas>[m
+[32m+[m
+[32m+[m[32m<!-- / -->[m
+[32m+[m
+[32m+[m
+[32m+[m[32m<!-- ############ SWITHCHER START-->[m
+[32m+[m[32m<div id="switcher">[m
+[32m+[m[32m    <div class="switcher white" id="sw-theme">[m
+[32m+[m[32m        <a href="#" data-ui-toggle-class="active" data-ui-target="#sw-theme" class="white sw-btn">[m
+[32m+[m[32m            <i class="fa fa-gear text-muted"></i>[m
+[32m+[m[32m        </a>[m
+[32m+[m[32m        <div class="box-header">[m
+[32m+[m[32m            <strong>Theme Switcher</strong>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m        <div class="box-divider"></div>[m
+[32m+[m[32m        <div class="box-body">[m
+[32m+[m[32m            <p id="settingLayout" class="hidden-md-down">[m
+[32m+[m[32m                <label class="md-check m-y-xs" data-target="folded">[m
+[32m+[m[32m              <input type="checkbox">[m
+[32m+[m[32m              <i class="green"></i>[m
+[32m+[m[32m              <span>Folded Aside</span>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="m-y-xs pointer" data-ui-fullscreen data-target="fullscreen">[m
+[32m+[m[32m              <span class="fa fa-expand fa-fw m-r-xs"></span>[m
+[32m+[m[32m              <span>Fullscreen Mode</span>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m            </p>[m
+[32m+[m[32m            <p>Colors:</p>[m
+[32m+[m[32m            <p data-target="color">[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="primary">[m
+[32m+[m[32m              <i class="primary"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="accent">[m
+[32m+[m[32m              <i class="accent"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="warn">[m
+[32m+[m[32m              <i class="warn"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="success">[m
+[32m+[m[32m              <i class="success"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="info">[m
+[32m+[m[32m              <i class="info"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="blue">[m
+[32m+[m[32m              <i class="blue"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="warning">[m
+[32m+[m[32m              <i class="warning"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="radio radio-inline m-a-0 ui-check ui-check-color ui-check-md">[m
+[32m+[m[32m              <input type="radio" name="color" value="danger">[m
+[32m+[m[32m              <i class="danger"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m            </p>[m
+[32m+[m[32m            <p>Themes:</p>[m
+[32m+[m[32m            <div data-target="bg" class="text-u-c text-center _600 clearfix">[m
+[32m+[m[32m                <label class="p-a col-xs-3 light pointer m-a-0">[m
+[32m+[m[32m              <input type="radio" name="theme" value="" hidden>[m
+[32m+[m[32m              <i class="active-checked fa fa-check"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="p-a col-xs-3 grey pointer m-a-0">[m
+[32m+[m[32m              <input type="radio" name="theme" value="grey" hidden>[m
+[32m+[m[32m              <i class="active-checked fa fa-check"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="p-a col-xs-3 dark pointer m-a-0">[m
+[32m+[m[32m              <input type="radio" name="theme" value="dark" hidden>[m
+[32m+[m[32m              <i class="active-checked fa fa-check"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m                <label class="p-a col-xs-3 black pointer m-a-0">[m
+[32m+[m[32m              <input type="radio" name="theme" value="black" hidden>[m
+[32m+[m[32m              <i class="active-checked fa fa-check"></i>[m
+[32m+[m[32m            </label>[m
+[32m+[m[32m            </div>[m
+[32m+[m[32m        </div>[m
+[32m+[m[32m    </div>[m
+[32m+[m[32m</div>[m
+[32m+[m[32m<!-- ############ SWITHCHER END-->[m
+[32m+[m[32m<!-- ############ SEARCH START -->[m
+[32m+[m[32m<div class="modal white lt fade" id="search-modal" data-backdrop="false">[m
+[32m+[m[32m    <a data-dismiss="modal" class="text-muted text-lg p-x modal-close-btn">&times;</a>[m
+[32m+[m[32m    <div class="row-col">[m
+[32m+[m[32m        <div class="p-a-lg h-v row-cell v-m">[m
+[32m+[m[32m            <div class="row">[m
+[32m+[m[32m                <div class="col-md-8 offset-md-2">[m
+[32m+[m[32m                    <form action="search.html" class="m-b-md">[m
+[32m+[m[32m                        <div class="input-group input-group-lg">[m
+[32m+[m[32m                            <input type="text" class="form-control" placeholder="Type keyword" data-ui-toggle-class="hide" data-ui-target="#search-result">[m
+[32m+[m[32m                            <span class="input-group-btn">[m
+[32m+[m[32m                    <button class="btn b-a no-shadow white" type="submit">Search</button>[m
+[32m+[m[32m                  </span>[m
+[32m+[m[32m                        </div>[m
+[32m+[m[32m                    </form>[m
+[32m+[m[32m                    <div id="search-result" class="animated fadeIn">[m
+[32m+[m[32m                        <p class="m-b-md"><strong>23</strong> <span class="text-muted">Results found for: </span><strong>Keyword</strong></p>[m
+[32m+[m[32m                        <div class="row">[m
+[32m+[m[32m                            <div class="col-sm-6">[m
+[32m+[m[32m                                <div class="row item-list item-list-sm item-list-by m-b">[m
+[32m+[m[32m                                    <div class="col-xs-12">[m
+[32m+[m[32m                                        <div class="item r" data-id="item-3" data-src="http://api.soundcloud.com/tracks/79031167/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">[m
+[32m+[m[32m                                            <div class="item-media ">[m
+[32m+[m[32m                                                <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b2.jpg');"></a>[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                            <div class="item-info">[m
+[32m+[m[32m                                                <div class="item-title text-ellipsis">[m
+[32m+[m[32m                                                    <a href="track.detail.html">I Wanna Be In the Cavalry</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-author text-sm text-ellipsis ">[m
+[32m+[m[32m                                                    <a href="artist.detail.html" class="text-muted">Jeremy Scott</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-meta text-sm text-muted">[m
+[32m+[m[32m                                                </div>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                        </div>[m
+[32m+[m[32m                                    </div>[m
+[32m+[m[32m                                    <div class="col-xs-12">[m
+[32m+[m[32m                                        <div class="item r" data-id="item-6" data-src="http://api.soundcloud.com/tracks/236107824/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">[m
+[32m+[m[32m                                            <div class="item-media ">[m
+[32m+[m[32m                                                <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b5.jpg');"></a>[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                            <div class="item-info">[m
+[32m+[m[32m                                                <div class="item-title text-ellipsis">[m
+[32m+[m[32m                                                    <a href="track.detail.html">Body on me</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-author text-sm text-ellipsis ">[m
+[32m+[m[32m                                                    <a href="artist.detail.html" class="text-muted">Rita Ora</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-meta text-sm text-muted">[m
+[32m+[m[32m                                                </div>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                        </div>[m
+[32m+[m[32m                                    </div>[m
+[32m+[m[32m                                    <div class="col-xs-12">[m
+[32m+[m[32m                                        <div class="item r" data-id="item-2" data-src="http://api.soundcloud.com/tracks/259445397/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">[m
+[32m+[m[32m                                            <div class="item-media ">[m
+[32m+[m[32m                                                <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b1.jpg');"></a>[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                            <div class="item-info">[m
+[32m+[m[32m                                                <div class="item-title text-ellipsis">[m
+[32m+[m[32m                                                    <a href="track.detail.html">Fireworks</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-author text-sm text-ellipsis ">[m
+[32m+[m[32m                                                    <a href="artist.detail.html" class="text-muted">Kygo</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-meta text-sm text-muted">[m
+[32m+[m[32m                                                </div>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                        </div>[m
+[32m+[m[32m                                    </div>[m
+[32m+[m[32m                                    <div class="col-xs-12">[m
+[32m+[m[32m                                        <div class="item r" data-id="item-7" data-src="http://api.soundcloud.com/tracks/245566366/stream?client_id=a10d44d431ad52868f1bce6d36f5234c">[m
+[32m+[m[32m                                            <div class="item-media ">[m
+[32m+[m[32m                                                <a href="track.detail.html" class="item-media-content" style="background-image: url('images/b6.jpg');"></a>[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                            <div class="item-info">[m
+[32m+[m[32m                                                <div class="item-title text-ellipsis">[m
+[32m+[m[32m                                                    <a href="track.detail.html">Reflection (Deluxe)</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-author text-sm text-ellipsis ">[m
+[32m+[m[32m                                                    <a href="artist.detail.html" class="text-muted">Fifth Harmony</a>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                                <div class="item-meta text-sm text-muted">[m
+[32m+[m[32m                                                </div>[m
+[32m+[m
+[32m+[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                        </div>[m
+[32m+[m[32m                                    </div>[m
+[32m+[m[32m                                </div>[m
+[32m+[m[32m                            </div>[m
+[32m+[m[32m                            <div class="col-sm-6">[m
+[32m+[m[32m                                <div class="row item-list item-list-sm item-list-by m-b">[m
+[32m+[m[32m                                    <div class="col-xs-12">[m
+[32m+[m[32m                                        <div class="item">[m
+[32m+[m[32m                                            <div class="item-media rounded ">[m
+[32m+[m[32m                                                <a href="artist.detail.html" class="item-media-content" style="background-image: url('images/a7.jpg');"></a>[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                            <div class="item-info ">[m
+[32m+[m[32m                                                <div class="item-title text-ellipsis">[m
+[32m+[m[32m                                                    <a href="artist.detail.html">Richard Carr</a>[m
+[32m+[m[32m                                                    <div class="text-sm text-muted">6 songs</div>[m
+[32m+[m[32m                                                </div>[m
+[32m+[m[32m                                            </div>[m
+[32m+[m[32m                                        </div>[m
+[32m+[m[32m                                    </div>[m
+[32m+[m[32m                                    <div class="col-xs-12">[m
+[32m+[m[32m                                        <div class="item">[m
+[32m+[m[32m                       
