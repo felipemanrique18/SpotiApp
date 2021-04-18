@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
       console.log(errorServicio);
       this.error=true;
       this.messageError=errorServicio.error.error.message;
+      this.spotify.getToken();
     }));
     this.loading=false;
   }

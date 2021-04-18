@@ -6,19 +6,31 @@ import { map } from "rxjs/operators";
   providedIn: 'root'
 })
 export class SpotifyService {
-
+  
+  private token="";
   constructor(private http:HttpClient) { 
     console.log('Spotify service listo');
    }
 
    getQuery(query:string){
+    this.getToken();
      const url=`https://api.spotify.com/v1/${query}`;
-
+     console.log(this.token);
      const headers=new HttpHeaders({
-      'Authorization':'Bearer BQD0WXlcw4rUuTZMVXHNLbhmSQqe1oEURT_l0bkf1sAbLzKdsHX4LuFZNCqd2sdXGR0m_Ez-cBumFJOMo8s'
+      'Authorization':`'Bearer ${localStorage.getItem('token')}'`
     });
-
     return this.http.get(url,{headers})
+   }
+  
+   getToken(){
+    let token="";
+    const body = 'grant_type=client_credentials&client_id=8d402360c581435ba81d16ba215565bd&client_secret=97cc666b7327407c8979fa2117fcfb9b';
+    const header={'Content-Type': 'application/x-www-form-urlencoded'}
+    this.http.post(`https://accounts.spotify.com/api/token`,body,{ headers: header }).subscribe((resp:any)=>{
+      this.token=resp.access_token;
+        localStorage.setItem('token',this.token);
+    });
+    return token;
    }
 
    getNewReleases(){
